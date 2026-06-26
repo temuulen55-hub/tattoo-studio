@@ -5,28 +5,29 @@ export default function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="border-t border-charcoal/10 bg-ivory pb-24 pt-14 lg:pb-14">
+    <footer className="border-t border-[rgba(240,234,224,0.07)] bg-[#161412] pb-24 pt-14 lg:pb-14">
       <div className="mx-auto max-w-content px-5 lg:px-8">
         <div className="grid gap-10 lg:grid-cols-4">
-          {/* Brand + богино тодорхойлолт */}
+          {/* Brand */}
           <div className="lg:col-span-2">
-            <p className="font-serif text-2xl text-charcoal">
+            <p className="font-serif text-2xl font-medium text-[#F0EAE0]">
               {SITE_CONFIG.name}
             </p>
-            <p className="mt-3 max-w-sm font-sans text-sm text-charcoal/70">
+            {/* Neon pink rule under brand name */}
+            <div className="mt-2 h-px w-10 bg-[#FF1053] opacity-60" />
+            <p className="mt-4 max-w-sm font-sans text-sm leading-relaxed text-[rgba(240,234,224,0.5)]">
               Улаанбаатар хот дахь мэргэжлийн шивээсний студи. Хувь хүний
               онцлогт тохирсон өвөрмөц урлаг.
             </p>
 
-            {/* Icon grid */}
-            <div className="mt-6 flex items-center gap-4">
-              {/* Business Instagram */}
+            {/* Social icons */}
+            <div className="mt-6 flex items-center gap-3">
               <a
                 href="https://www.instagram.com/doxy_tattoo/"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Instagram"
-                className="flex h-10 w-10 items-center justify-center rounded-full border border-charcoal/15 transition-colors hover:border-dusty-rose hover:text-dusty-rose"
+                className="flex h-10 w-10 items-center justify-center rounded-full border border-[rgba(240,234,224,0.1)] text-[rgba(240,234,224,0.5)] transition-all duration-300 hover:border-[#FF1053] hover:text-[#FF1053] hover:shadow-[0_0_12px_rgba(255,16,83,0.25)]"
               >
                 <svg
                   width="18"
@@ -54,11 +55,10 @@ export default function Footer() {
                   <circle cx="17.4" cy="6.6" r="1" fill="currentColor" />
                 </svg>
               </a>
-              {/* Phone */}
               <a
                 href="tel:+97689169169"
                 aria-label="Утасаар холбогдох"
-                className="flex h-10 w-10 items-center justify-center rounded-full border border-charcoal/15 transition-colors hover:border-dusty-rose hover:text-dusty-rose"
+                className="flex h-10 w-10 items-center justify-center rounded-full border border-[rgba(240,234,224,0.1)] text-[rgba(240,234,224,0.5)] transition-all duration-300 hover:border-[#FF1053] hover:text-[#FF1053] hover:shadow-[0_0_12px_rgba(255,16,83,0.25)]"
               >
                 <svg
                   width="16"
@@ -77,9 +77,9 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Цэс */}
+          {/* Nav links */}
           <div>
-            <p className="font-sans text-xs font-medium uppercase tracking-wide text-charcoal/50">
+            <p className="font-sans text-xs font-semibold uppercase tracking-[0.18em] text-[rgba(240,234,224,0.3)]">
               Цэс
             </p>
             <ul className="mt-4 space-y-2.5">
@@ -93,27 +93,28 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Байршил */}
+          {/* Studio info */}
           <div>
-            <p className="font-sans text-xs font-medium uppercase tracking-wide text-charcoal/50">
+            <p className="font-sans text-xs font-semibold uppercase tracking-[0.18em] text-[rgba(240,234,224,0.3)]">
               Байршил
             </p>
-            <p className="mt-4 font-sans text-sm text-charcoal/80">
+            <p className="mt-4 font-sans text-sm text-[rgba(240,234,224,0.6)]">
               {SITE_CONFIG.address}
             </p>
-            <p className="mt-2 font-sans text-sm text-charcoal/80">
+            <p className="mt-2 font-sans text-sm text-[rgba(240,234,224,0.6)]">
               {SITE_CONFIG.hours}
             </p>
           </div>
         </div>
 
-        <div className="mt-12 flex flex-col gap-3 border-t border-charcoal/10 pt-6 font-sans text-xs text-charcoal/50 lg:flex-row lg:items-center lg:justify-between">
+        <div className="mt-12 flex flex-col gap-3 border-t border-[rgba(240,234,224,0.07)] pt-6 font-sans text-xs text-[rgba(240,234,224,0.3)] lg:flex-row lg:items-center lg:justify-between">
           <p>© {year} Doxy Tattoo. Бүх эрх хуулиар хамгаалагдсан.</p>
-          <div className="flex gap-5">
-            <Link href="/huviin-nuuclal" className="hover:text-charcoal/80">
-              Нууцлалын бодлого
-            </Link>
-          </div>
+          <Link
+            href="/huviin-nuuclal"
+            className="hover:text-[#FF1053] transition-colors duration-300"
+          >
+            Нууцлалын бодлого
+          </Link>
         </div>
       </div>
     </footer>

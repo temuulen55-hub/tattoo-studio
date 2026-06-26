@@ -2,14 +2,15 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
 import { PRIMARY_NAV, BOOKING_CTA, SITE_CONFIG } from "@/lib/nav";
 import MobileNav from "./MobileNav";
 
 export default function Header() {
   const [isMobileNavOpen, setIsMobileNavOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const pathname = usePathname();
 
-  // Header sticky үед subtle shadow/border нэмэгдэх — Site Map-д заасан "Header (Sticky)"
   useEffect(() => {
     const onScroll = () => setIsScrolled(window.scrollY > 8);
     onScroll();
@@ -20,48 +21,61 @@ export default function Header() {
   return (
     <>
       <header
-        className={`sticky top-0 z-40 w-full bg-champagne/95 backdrop-blur transition-shadow ${
-          isScrolled ? "shadow-card" : ""
+        className={`sticky top-0 z-40 w-full transition-all duration-300 ${
+          isScrolled
+            ? "border-b border-[rgba(255,16,83,0.12)] bg-[rgba(13,12,11,0.88)] shadow-[0_4px_24px_rgba(0,0,0,0.5)] backdrop-blur-xl"
+            : "bg-transparent"
         }`}
         style={{ height: "var(--header-height)" }}
       >
         <div className="mx-auto flex h-full max-w-content items-center justify-between px-5 lg:px-8">
-          {/* Лого — зүүн талд (UX зарчим: brand recognition эхэнд) */}
+          {/* Logo — neon glow on hover */}
           <Link
             href="/"
-            className="font-serif text-2xl font-medium tracking-tight text-charcoal"
+            className="group font-serif text-2xl font-medium tracking-tight text-[#F0EAE0] transition-all duration-300"
           >
-            {SITE_CONFIG.name}
+            <span className="transition-all duration-300 group-hover:text-[#FF1053] group-hover:[text-shadow:0_0_20px_rgba(255,16,83,0.5)]">
+              {SITE_CONFIG.name}
+            </span>
           </Link>
 
-          {/* Desktop нav — баруун талд */}
+          {/* Desktop nav */}
           <nav
             className="hidden items-center gap-7 lg:flex"
             aria-label="Үндсэн цэс"
           >
-            {PRIMARY_NAV.map((item) => (
-              <Link key={item.href} href={item.href} className="nav-link">
-                {item.label}
-              </Link>
-            ))}
+            {PRIMARY_NAV.map((item) => {
+              const isActive = pathname === item.href;
+              return (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  className={`nav-link ${
+                    isActive ? "!text-[#FF1053] after:!w-full" : ""
+                  }`}
+                >
+                  {item.label}
+                </Link>
+              );
+            })}
           </nav>
 
           <div className="flex items-center gap-3">
-            {/* Тогтмол харагдах primary CTA — desktop дээр header дотор */}
+            {/* Primary CTA */}
             <Link
               href={BOOKING_CTA.href}
               className="btn-primary hidden lg:inline-flex"
             >
-              {BOOKING_CTA.label}
+              <span>{BOOKING_CTA.label}</span>
             </Link>
 
-            {/* Hamburger — mobile/tablet */}
+            {/* Hamburger */}
             <button
               type="button"
               aria-label={isMobileNavOpen ? "Цэсийг хаах" : "Цэсийг нээх"}
               aria-expanded={isMobileNavOpen}
               onClick={() => setIsMobileNavOpen((open) => !open)}
-              className="flex h-10 w-10 items-center justify-center rounded-full lg:hidden"
+              className="flex h-10 w-10 items-center justify-center rounded-full border border-[rgba(240,234,224,0.1)] text-[rgba(240,234,224,0.7)] transition-all duration-300 hover:border-[#FF1053] hover:text-[#FF1053] lg:hidden"
             >
               <svg
                 width="22"

@@ -1,25 +1,31 @@
 import type { Config } from "tailwindcss";
 
-// Дизайны систем — Техникийн тодорхойлолтын 5-р хэсэгт заасан өнгө, типографийн tokens.
-// Бүх компонент эндээс л өнгө, фонтоо авна — hardcode hex утга component дотор бичихгүй.
+// Doxy Tattoo — "Premium Neon Noir" Design System
+// Palette: void black backgrounds, ivory text, neon pink accent, soft gold highlight
 const config: Config = {
   content: ["./app/**/*.{ts,tsx}", "./components/**/*.{ts,tsx}"],
   theme: {
     extend: {
       colors: {
-        // Roles are swapped: Backgrounds are now dark, Text and Buttons are now light.
-        champagne: "#11100E", // Was #F5EFE6 (Now a very dark, deep charcoal for the main background)
-        ivory: "#1A1816", // Was #FAF7F2 (Now a slightly lighter dark for section backgrounds)
-        charcoal: "#F5EFE6", // Was #2B2925 (Now uses your old champagne color for text)
-        "dusty-rose": "#C9A0A0", // Kept the same for consistency
-        espresso: "#FAF7F2", // Was #3A2E2A (Now uses your old ivory color for bright CTA buttons)
-        "soft-gold": "#C9A66B", // Kept the same
-        "neon-pink": "#FF1053", // Added for subtle hover effects or borders
+        // Backgrounds — void black layering system
+        champagne: "#0D0C0B", // Page background (deepest void)
+        ivory: "#161412", // Section/card surface (one step lighter)
+
+        // Text — high-contrast ivories
+        charcoal: "#F0EAE0", // Primary text (warm off-white)
+
+        // Accents
+        "dusty-rose": "#FF1053", // Neon pink — THE signature accent
+        espresso: "#F0EAE0", // CTA button fill (matches text for reversed buttons)
+        "soft-gold": "#C9A66B", // Gold — kept for stars, category labels
+        "neon-pink": "#FF1053", // Alias for explicit neon references
+
+        // Surfaces & borders
+        "surface-1": "#1E1B18", // Hover card surface
+        "surface-2": "#2A2520", // Border color
       },
       fontFamily: {
-        // Playfair Display — Кирилл (Cyrillic) дэмжлэгтэй serif, гарчигт
         serif: ["var(--font-display)", "Georgia", "serif"],
-        // Inter — Кирилл дэмжлэгтэй sans-serif, body текстэнд
         sans: ["var(--font-body)", "system-ui", "sans-serif"],
       },
       maxWidth: {
@@ -29,8 +35,38 @@ const config: Config = {
         pill: "999px",
       },
       boxShadow: {
-        // Darkened shadow to blend perfectly into the new dark backgrounds
-        card: "0 4px 24px rgba(0, 0, 0, 0.4)",
+        // Neon pink glow — the signature element
+        "neon-sm": "0 0 12px rgba(255, 16, 83, 0.25)",
+        "neon-md": "0 0 24px rgba(255, 16, 83, 0.35)",
+        "neon-lg": "0 0 40px rgba(255, 16, 83, 0.45)",
+        // Card elevation for dark mode
+        card: "0 4px 24px rgba(0, 0, 0, 0.6), 0 1px 0 rgba(255,255,255,0.04) inset",
+        "card-hover":
+          "0 8px 40px rgba(0, 0, 0, 0.8), 0 0 24px rgba(255, 16, 83, 0.2)",
+      },
+      transitionDuration: {
+        DEFAULT: "300ms",
+      },
+      transitionTimingFunction: {
+        DEFAULT: "cubic-bezier(0.4, 0, 0.2, 1)",
+      },
+      keyframes: {
+        "fade-up": {
+          "0%": { opacity: "0", transform: "translateY(16px)" },
+          "100%": { opacity: "1", transform: "translateY(0)" },
+        },
+        "glow-pulse": {
+          "0%, 100%": { boxShadow: "0 0 12px rgba(255, 16, 83, 0.2)" },
+          "50%": { boxShadow: "0 0 28px rgba(255, 16, 83, 0.5)" },
+        },
+      },
+      animation: {
+        "fade-up": "fade-up 0.5s ease-out both",
+        "glow-pulse": "glow-pulse 3s ease-in-out infinite",
+      },
+      backgroundImage: {
+        "neon-gradient": "linear-gradient(135deg, #FF1053 0%, #C9166A 100%)",
+        "surface-gradient": "linear-gradient(180deg, #1E1B18 0%, #161412 100%)",
       },
     },
   },

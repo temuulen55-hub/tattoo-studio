@@ -3,6 +3,7 @@ node_modules/
 .next/
 out/
 build/
+public/
 
 
 # 3. Local Environment Variables & Secrets (Security)

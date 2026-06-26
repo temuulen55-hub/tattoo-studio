@@ -45,13 +45,7 @@ export const portfolioData: PortfolioItem[] = [
       "/images/portfolio/a4.jpeg",
     ],
   },
-  {
-    id: "insta-01",
-    title: "Сүүлийн үеийн бүтээл",
-    category: "Fine Line",
-    type: "instagram",
-    instagramUrl: "https://www.instagram.com/p/DYorXpnAtN3/",
-  },
+
   {
     id: "minimalist-01",
     title: "Нурууны шивээс",

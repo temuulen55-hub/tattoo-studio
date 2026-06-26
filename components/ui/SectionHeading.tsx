@@ -12,12 +12,12 @@ export default function SectionHeading({
   return (
     <div className={align === "center" ? "text-center" : "text-left"}>
       {eyebrow && (
-        <p className="font-sans text-xs font-medium uppercase tracking-[0.18em] text-dusty-rose">
+        <p className="font-sans text-xs font-semibold uppercase tracking-[0.22em] text-[#FF1053]">
           {eyebrow}
         </p>
       )}
       <h2
-        className={`mt-3 font-serif text-3xl leading-tight text-charcoal lg:text-4xl ${
+        className={`mt-3 font-serif text-3xl font-medium leading-tight tracking-tight text-[#F0EAE0] lg:text-4xl ${
           align === "center" ? "mx-auto" : ""
         }`}
       >
@@ -25,7 +25,7 @@ export default function SectionHeading({
       </h2>
       {subtitle && (
         <p
-          className={`mt-3 max-w-xl font-sans text-charcoal/70 ${
+          className={`mt-3 max-w-xl font-sans leading-relaxed text-[rgba(240,234,224,0.55)] ${
             align === "center" ? "mx-auto" : ""
           }`}
         >

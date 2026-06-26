@@ -2,60 +2,150 @@
 @tailwind components;
 @tailwind utilities;
 
-/* 2. Define Variables (Updated for Doxy Tattoo) */
+/* ─── Design Tokens ─────────────────────────────────────────────────────────── */
 :root {
-  /* Retaining your palette as it fits a sophisticated Tattoo studio perfectly */
-  --color-champagne: #f5efe6;
-  --color-charcoal: #2b2925;
-  --color-dusty-rose: #c9a0a0;
-  --color-espresso: #3a2e2a;
-  --color-soft-gold: #c9a66b;
+  --color-void: #0d0c0b; /* Page bg — deepest */
+  --color-surface: #161412; /* Card / section bg */
+  --color-surface-1: #1e1b18; /* Hover / elevated surface */
+  --color-border: rgba(240, 234, 224, 0.08); /* Subtle light-on-dark border */
+  --color-text: #f0eae0; /* Primary text */
+  --color-text-muted: rgba(240, 234, 224, 0.55);
+  --color-neon: #ff1053; /* Signature accent */
+  --color-gold: #c9a66b;
 
   --header-height: 76px;
   --mobile-cta-height: 64px;
+
+  /* Neon glow values for reuse */
+  --glow-sm: 0 0 12px rgba(255, 16, 83, 0.25);
+  --glow-md: 0 0 24px rgba(255, 16, 83, 0.35);
+  --glow-lg: 0 0 40px rgba(255, 16, 83, 0.45);
 }
 
-/* 3. Base Styles */
+/* ─── Base Reset ─────────────────────────────────────────────────────────────── */
 html {
   scroll-behavior: smooth;
 }
 
 body {
-  background-color: var(--color-champagne);
-  color: var(--color-charcoal);
-  /* Optional: Adds a slight "ink" aesthetic to the selection */
+  background-color: var(--color-void);
+  color: var(--color-text);
+
+  /* Ink-stain text selection — on-brand micro-detail */
   ::selection {
-    background-color: var(--color-dusty-rose);
-    color: white;
+    background-color: var(--color-neon);
+    color: #fff;
   }
 }
 
-/* 4. Custom Components Layer */
+/* Scrollbar — keep it dark and clean */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-void);
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 16, 83, 0.35);
+  border-radius: 999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-neon);
+}
+
+/* ─── Component Layer ────────────────────────────────────────────────────────── */
 @layer components {
+  /* PRIMARY BUTTON
+     Dark fill + neon border. On hover: neon fills, glow radiates.
+     Bottom-fill approach via pseudo-element for a tactile, "lit from below" feel. */
   .btn-primary {
-    @apply inline-flex items-center justify-center rounded-full bg-espresso px-6 py-3
-           font-sans text-sm font-medium text-champagne transition-all
-           hover:bg-charcoal hover:shadow-lg focus-visible:outline focus-visible:outline-2
-           focus-visible:outline-offset-2 focus-visible:outline-soft-gold;
+    @apply relative inline-flex items-center justify-center overflow-hidden
+           rounded-full border border-[#FF1053]
+           bg-transparent px-6 py-3
+           font-sans text-sm font-medium tracking-wide text-[#FF1053]
+           transition-all duration-300 ease-out
+           focus-visible:outline focus-visible:outline-2
+           focus-visible:outline-offset-2 focus-visible:outline-[#FF1053];
+  }
+  .btn-primary::before {
+    content: "";
+    @apply absolute inset-0 translate-y-full rounded-full bg-[#FF1053]
+           transition-transform duration-300 ease-out;
+  }
+  .btn-primary:hover::before {
+    @apply translate-y-0;
+  }
+  .btn-primary:hover {
+    @apply text-white shadow-[var(--glow-md)];
+  }
+  /* Text sits above the fill pseudo-element */
+  .btn-primary > * {
+    @apply relative z-10;
+  }
+  /* When the button contains only text (no child elements), lift text above ::before */
+  .btn-primary {
+    isolation: isolate;
   }
 
+  /* SECONDARY BUTTON — ghost with soft border, neon on hover */
   .btn-secondary {
-    @apply inline-flex items-center justify-center rounded-full border border-charcoal/20
-           bg-transparent px-6 py-3 font-sans text-sm font-medium text-charcoal
-           transition-all hover:border-dusty-rose hover:text-dusty-rose;
+    @apply inline-flex items-center justify-center rounded-full
+           border border-[rgba(240,234,224,0.15)]
+           bg-transparent px-6 py-3
+           font-sans text-sm font-medium tracking-wide text-[rgba(240,234,224,0.7)]
+           transition-all duration-300 ease-out
+           hover:border-[#FF1053] hover:text-[#FF1053]
+           hover:shadow-[var(--glow-sm)];
   }
 
+  /* NAV LINK — clean muted, full white + neon underline on hover/active */
   .nav-link {
-    @apply font-sans text-sm text-charcoal/80 transition-colors hover:text-charcoal font-medium;
+    @apply relative font-sans text-sm font-medium text-[rgba(240,234,224,0.6)]
+           transition-colors duration-300 hover:text-[#F0EAE0];
+  }
+  .nav-link::after {
+    content: "";
+    @apply absolute -bottom-0.5 left-0 h-px w-0 bg-[#FF1053]
+           transition-all duration-300;
+  }
+  .nav-link:hover::after {
+    @apply w-full;
   }
 
-  /* Added a helper for your portfolio/gallery cards */
+  /* CARD — dark surface, neon glow + lift on hover */
+  .card-noir {
+    @apply rounded-2xl border bg-[#161412] p-6
+           transition-all duration-300 ease-out
+           hover:-translate-y-1.5 hover:shadow-[var(--shadow-hover)];
+    border-color: var(--color-border);
+  }
+  .card-noir:hover {
+    box-shadow:
+      0 8px 40px rgba(0, 0, 0, 0.8),
+      0 0 24px rgba(255, 16, 83, 0.18);
+    border-color: rgba(255, 16, 83, 0.25);
+  }
+
+  /* Shared shadow alias */
   .shadow-card {
-    @apply shadow-[0_4px_20px_rgba(43,41,37,0.08)];
+    box-shadow:
+      0 4px 24px rgba(0, 0, 0, 0.6),
+      0 1px 0 rgba(255, 255, 255, 0.04) inset;
   }
 }
 
-/* 5. Reduced Motion */
+/* ─── Utility: Neon text glow ────────────────────────────────────────────────── */
+@layer utilities {
+  .text-glow-neon {
+    text-shadow: 0 0 20px rgba(255, 16, 83, 0.6);
+  }
+  .border-neon {
+    border-color: rgba(255, 16, 83, 0.4);
+  }
+}
+
+/* ─── Reduced Motion ─────────────────────────────────────────────────────────── */
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,

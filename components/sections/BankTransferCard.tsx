@@ -5,11 +5,8 @@ import { QRCodeSVG } from "qrcode.react";
 import { BANK_TRANSFER_INFO, PAYMENT_INSTRUCTION } from "@/lib/data/payment";
 
 type Props = {
-  /** Жишээ нь: "Анхан шатны мэйкап сургалт" эсвэл "Цаг захиалгын урьдчилгаа" */
   label: string;
-  /** Жишээ нь: "450,000₮" */
   amount: string;
-  /** Захиалгын хуудсанд QR код харуулна, сургалтын төлбөрт шаардлагагүй */
   showQr?: boolean;
 };
 
@@ -20,9 +17,6 @@ export default function BankTransferCard({
 }: Props) {
   const [copiedField, setCopiedField] = useState<string | null>(null);
 
-  // QR код нь дансны мэдээллийг текст хэлбэрээр кодлоно — гар утасны камер/QR
-  // уншигчаар уншихад дугаар, нэрийг хурдан харуулна (банкны "scan-to-pay"
-  // тусгай формат биш, зүгээр л мэдээллийг хурдан дамжуулах энгийн QR).
   const qrPayload = [
     BANK_TRANSFER_INFO.bankName,
     BANK_TRANSFER_INFO.accountNumber,
@@ -39,27 +33,26 @@ export default function BankTransferCard({
         1800,
       );
     } catch {
-      // Clipboard API хориглогдсон орчинд (зарим webview) алдаа гарвал
-      // зүгээр дугаарыг гараар хуулахад нь саад болохгүй — UI эвдрэхгүй.
+      // Clipboard unavailable — graceful degradation
     }
   }
 
   return (
-    <div className="rounded-2xl border border-charcoal/10 bg-white/40 p-6 lg:p-8">
-      <div className="flex items-center justify-between gap-4 border-b border-charcoal/10 pb-5">
+    <div className="rounded-2xl border border-[rgba(240,234,224,0.08)] bg-[#161412] p-6 lg:p-8">
+      <div className="flex items-center justify-between gap-4 border-b border-[rgba(240,234,224,0.08)] pb-5">
         <div>
-          <p className="font-sans text-xs uppercase tracking-wide text-charcoal/50">
+          <p className="font-sans text-xs uppercase tracking-wide text-[rgba(240,234,224,0.4)]">
             {label}
           </p>
-          <p className="mt-1 font-serif text-2xl text-charcoal">{amount}</p>
+          <p className="mt-1 font-serif text-2xl text-[#F0EAE0]">{amount}</p>
         </div>
         {showQr && (
-          <div className="rounded-xl border border-charcoal/10 bg-white p-2">
+          <div className="rounded-xl border border-[rgba(240,234,224,0.1)] bg-white p-2">
             <QRCodeSVG
               value={qrPayload}
               size={88}
               bgColor="#FFFFFF"
-              fgColor="#2B2925"
+              fgColor="#0D0C0B"
             />
           </div>
         )}
@@ -90,13 +83,13 @@ export default function BankTransferCard({
         />
       </dl>
 
-      <div className="mt-6 flex items-start gap-3 rounded-xl bg-dusty-rose/15 p-4">
+      <div className="mt-6 flex items-start gap-3 rounded-xl border border-[rgba(255,16,83,0.15)] bg-[rgba(255,16,83,0.06)] p-4">
         <svg
           width="18"
           height="18"
           viewBox="0 0 24 24"
           fill="none"
-          className="mt-0.5 shrink-0 text-dusty-rose"
+          className="mt-0.5 shrink-0 text-[#FF1053]"
           aria-hidden="true"
         >
           <circle
@@ -114,8 +107,8 @@ export default function BankTransferCard({
           />
           <circle cx="12" cy="16" r="0.9" fill="currentColor" />
         </svg>
-        <p className="font-sans text-sm leading-relaxed text-charcoal/80">
-          <strong className="font-medium text-charcoal">Анхаар:</strong>{" "}
+        <p className="font-sans text-sm leading-relaxed text-[rgba(240,234,224,0.7)]">
+          <strong className="font-medium text-[#F0EAE0]">Анхаар:</strong>{" "}
           {PAYMENT_INSTRUCTION}
         </p>
       </div>
@@ -137,15 +130,21 @@ function BankField({
   return (
     <div className="flex items-center justify-between gap-4">
       <div>
-        <dt className="font-sans text-xs text-charcoal/50">{label}</dt>
-        <dd className="mt-0.5 font-sans text-base font-medium text-charcoal">
+        <dt className="font-sans text-xs text-[rgba(240,234,224,0.4)]">
+          {label}
+        </dt>
+        <dd className="mt-0.5 font-sans text-base font-medium text-[#F0EAE0]">
           {value}
         </dd>
       </div>
       <button
         type="button"
         onClick={onCopy}
-        className="shrink-0 rounded-pill border border-charcoal/15 px-3.5 py-1.5 font-sans text-xs font-medium text-charcoal/70 transition-colors hover:border-dusty-rose hover:text-dusty-rose"
+        className={`shrink-0 rounded-pill border px-3.5 py-1.5 font-sans text-xs font-medium transition-all duration-300 ${
+          copied
+            ? "border-[#FF1053] bg-[rgba(255,16,83,0.1)] text-[#FF1053]"
+            : "border-[rgba(240,234,224,0.12)] text-[rgba(240,234,224,0.55)] hover:border-[#FF1053] hover:text-[#FF1053]"
+        }`}
       >
         {copied ? "Хуулсан ✓" : "Хуулах"}
       </button>
