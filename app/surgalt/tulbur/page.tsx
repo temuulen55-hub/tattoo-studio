@@ -26,7 +26,7 @@ export default async function BookingPage() {
 
         <div className="mt-10">
           <BankTransferCard
-            label="Doxy Tattoo - Урьдчилгаа төлбөр"
+            label="Temka Tattoo - Урьдчилгаа төлбөр"
             amount="50,000₮"
             showQr={false}
           />

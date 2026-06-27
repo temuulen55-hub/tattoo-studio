@@ -20,14 +20,14 @@ export const BOOKING_CTA: NavItem = {
 };
 
 export const SITE_CONFIG = {
-  name: "Doxy Tattoo",
-  phone: "89-169-169",
-  phoneHref: "tel:+97689169169",
-  email: "hello@doxytattoo.com",
-  emailHref: "mailto:hello@doxytattoo.com",
+  name: "Temka Tattoo",
+  phone: "9988 7766",
+  phoneHref: "tel:+97699887766",
+  email: "hello@Temkatattoo.com",
+  emailHref: "mailto:temuulen.iphone5@gmail.com",
   // Updated to business and personal Instagrams per your request
-  instagramBusiness: "https://www.instagram.com/doxy_tattoo/",
-  instagramPersonal: "https://www.instagram.com/doxy_fsn/",
+  instagramBusiness: "https://www.instagram.com/temulenni/",
+  instagramPersonal: "https://www.instagram.com/temulenni/",
   hours: "Даваа - Бямба: 11:00 - 20:00",
   address: "Улаанбаатар, Монгол улс",
 };

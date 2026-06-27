@@ -27,14 +27,15 @@ export default function BidniiTuhaiPage() {
             <div>
               <SectionHeading
                 eyebrow="Бидний тухай"
-                title="Doxy Tattoo-н тухай"
+                title="Temka Tattoo-н тухай"
               />
               <p className="mt-6 font-sans leading-relaxed text-charcoal/80">
-                Сайн байна уу, намайг Doxy гэдэг. Би мэргэжлийн шивээсчин артист
-                бөгөөд 5 гаруй жилийн турш үйлчлүүлэгчдийнхээ хүсэл мөрөөдлийг
-                арьсан дээр урлагийн бүтээл болгон буулгаж байна. Миний хувьд
-                шивээс гэдэг нь зөвхөн зураг биш, харин хүний дотоод ертөнц,
-                өөрийн гэсэн өвөрмөц онцлогийг илэрхийлэх мөнхийн урлаг юм.
+                Сайн байна уу, намайг Temka гэдэг. Би мэргэжлийн шивээсчин
+                артист бөгөөд 5 гаруй жилийн турш үйлчлүүлэгчдийнхээ хүсэл
+                мөрөөдлийг арьсан дээр урлагийн бүтээл болгон буулгаж байна.
+                Миний хувьд шивээс гэдэг нь зөвхөн зураг биш, харин хүний дотоод
+                ертөнц, өөрийн гэсэн өвөрмөц онцлогийг илэрхийлэх мөнхийн урлаг
+                юм.
               </p>
               <p className="mt-4 font-sans leading-relaxed text-charcoal/80">
                 Би нарийн зураас (Fine line), минималист болон хувь хүний
@@ -61,15 +62,15 @@ export default function BidniiTuhaiPage() {
             <div className="flex flex-col gap-6">
               <div className="relative aspect-square w-full overflow-hidden rounded-2xl shadow-card">
                 <Image
-                  src="/images/portfolio/profile.png"
-                  alt="Artist Doxy"
+                  src="/images/portfolio/miniiprofile.jpeg"
+                  alt="Artist Temka"
                   fill
                   className="object-cover"
                   sizes="(max-width: 1024px) 100vw, 50vw"
                 />
               </div>
               <p className="font-serif text-2xl font-medium text-charcoal text-center">
-                Artist Doxy
+                Artist Temka
               </p>
             </div>
           </div>

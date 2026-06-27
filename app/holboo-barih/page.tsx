@@ -8,7 +8,7 @@ export default function HolbooBarihPage() {
       <Container>
         <SectionHeading
           eyebrow="Холбоо барих"
-          title="Doxy Tattoo-той холбогдох"
+          title="Temka Tattoo-той холбогдох"
         />
 
         <div className="mt-10 grid gap-12 lg:grid-cols-2">

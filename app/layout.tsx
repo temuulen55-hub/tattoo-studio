@@ -22,11 +22,11 @@ const bodyFont = Inter({
 
 export const metadata: Metadata = {
   metadataBase: new URL(
-    process.env.NEXT_PUBLIC_SITE_URL ?? "https://doxytattoo.com", // Updated URL
+    process.env.NEXT_PUBLIC_SITE_URL ?? "https://temkatattoo.com", // Updated URL
   ),
   title: {
-    default: "Doxy Tattoo | Улаанбаатар дахь мэргэжлийн шивээсчин",
-    template: "%s | Doxy Tattoo",
+    default: "Temka Tattoo | Улаанбаатар дахь мэргэжлийн шивээсчин",
+    template: "%s | Temka Tattoo",
   },
   description:
     "Улаанбаатар хотын мэргэжлийн шивээсний студи. Fine line, минималист болон хувь хүний онцлогт тохирсон шивээсний үйлчилгээ.",
