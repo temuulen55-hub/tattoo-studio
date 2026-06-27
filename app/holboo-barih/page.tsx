@@ -51,7 +51,7 @@ export default function HolbooBarihPage() {
                       href="tel:+97689169169"
                       className="text-charcoal hover:text-dusty-rose"
                     >
-                      89-169-169
+                      9988 7766
                     </a>
                   </dd>
                 </div>

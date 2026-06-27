@@ -23,7 +23,7 @@ export default function Footer() {
             {/* Social icons */}
             <div className="mt-6 flex items-center gap-3">
               <a
-                href="https://www.instagram.com/doxy_tattoo/"
+                href="https://www.instagram.com/temulenni/"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Instagram"
@@ -108,7 +108,7 @@ export default function Footer() {
         </div>
 
         <div className="mt-12 flex flex-col gap-3 border-t border-[rgba(240,234,224,0.07)] pt-6 font-sans text-xs text-[rgba(240,234,224,0.3)] lg:flex-row lg:items-center lg:justify-between">
-          <p>© {year} Doxy Tattoo. Бүх эрх хуулиар хамгаалагдсан.</p>
+          <p>© {year} Temka Tattoo. Бүх эрх хуулиар хамгаалагдсан.</p>
           <Link
             href="https://temuulenenkhbold.netlify.app/"
             className="hover:text-[#FF1053] transition-colors duration-300"
