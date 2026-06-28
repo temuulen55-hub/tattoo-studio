@@ -71,7 +71,7 @@ export default function SetgegdelPage() {
             Та ч мөн өөрийн сэтгэгдлээ хуваалцаарай
           </p>
           <p className="mt-2 font-sans text-sm text-[rgba(240,234,224,0.5)]">
-            Doxy Tattoo-д шивээс хийлгэсний дараа сэтгэгдлээ бидэнтэй
+            Temka Tattoo-д шивээс хийлгэсний дараа сэтгэгдлээ бидэнтэй
             хуваалцаарай.
           </p>
           <Link href="/holboo-barih" className="btn-secondary mt-6 inline-flex">

@@ -1,6 +1,6 @@
 import type { Config } from "tailwindcss";
 
-// Doxy Tattoo — "Premium Neon Noir" Design System
+// Temka Tattoo — "Premium Neon Noir" Design System
 // Palette: void black backgrounds, ivory text, neon pink accent, soft gold highlight
 const config: Config = {
   content: ["./app/**/*.{ts,tsx}", "./components/**/*.{ts,tsx}"],

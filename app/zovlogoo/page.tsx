@@ -2,6 +2,7 @@ import Container from "@/components/ui/Container";
 import SectionHeading from "@/components/ui/SectionHeading";
 import BlogList from "@/components/sections/BlogList";
 
+
 export default function ZovlogooPage() {
   return (
     <>
@@ -9,7 +10,7 @@ export default function ZovlogooPage() {
         <Container>
           <SectionHeading
             eyebrow="Зөвлөгөө"
-            title="Doxy Tattoo-н зөвлөх булан"
+            title="Temka Tattoo-н зөвлөх булан"
             subtitle="Шивээс хийлгэхээс өмнөх бэлтгэл, хийлгэсний дараах арчилгаа, болон шивээсний урлагийн тухай мэргэжлийн зөвлөгөөнүүд."
           />
         </Container>

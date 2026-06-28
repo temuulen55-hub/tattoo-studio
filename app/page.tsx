@@ -39,7 +39,7 @@ export default function HomePage() {
           className="animate-fade-up mx-auto mt-6 max-w-xl font-sans text-base leading-relaxed text-[rgba(240,234,224,0.6)] lg:text-lg"
           style={{ animationDelay: "160ms" }}
         >
-          Doxy Tattoo – нарийн мэдрэмж болон минималист хэв маягаар таны хүссэн
+          Temka Tattoo – нарийн мэдрэмж болон минималист хэв маягаар таны хүссэн
           шивээсийг амилуулна. Мэргэжлийн студи, найрсаг артист.
         </p>
 

@@ -7,7 +7,7 @@
 export const BANK_TRANSFER_INFO = {
   bankName: "Хаан банк",
   accountNumber: "5555 5555 55555",
-  accountHolderName: "Doxy Doxy",
+  accountHolderName: "Temka Tattoo",
 };
 
 export const PAYMENT_INSTRUCTION =
